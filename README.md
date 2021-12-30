@@ -1,6 +1,11 @@
 # xk6-crypto-x509
 A k6 extension to encrypt data with a PEM Public Key 
 
+This is a [k6](https://go.k6.io/k6) extension using the
+[xk6](https://github.com/grafana/xk6) system.
+
+| :exclamation: This is a proof of concept, isn't supported by the k6 team, and may break in the future. USE AT YOUR OWN RISK! |
+| ---------------------------------------------------------------------------------------------------------------------------- |
 ## Hash Supported:
 * sha256
 * sha512
