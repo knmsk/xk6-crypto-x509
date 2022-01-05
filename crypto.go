@@ -1,12 +1,14 @@
 package crypto
 
 import (
+	"crypto/md5"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/sha256"
 	"crypto/sha512"
 	"crypto/x509"
 	"encoding/pem"
+	"fmt"
 	"hash"
 	"regexp"
 	"strings"
@@ -21,6 +23,7 @@ var mapOfHashes map[string]hash.Hash = make(map[string]hash.Hash)
 func init() {
 	mapOfHashes["sha512"] = sha512.New()
 	mapOfHashes["sha256"] = sha256.New()
+	mapOfHashes["md5"] = md5.New()
 	modules.Register("k6/x/crypto-x509", new(CRYPTO))
 }
 
@@ -80,5 +83,6 @@ func (*CRYPTO) EncryptRsa(publicKey string, data string, algorithm string) strin
 	publicKeyFormatted := removeExtraSpaces(publicKey)
 	pubKey := loadPublicKey(publicKeyFormatted)
 	encryptedData := encryptData([]byte(data), pubKey, hash)
-	return string(encryptedData)
+	encryptText := fmt.Sprintf("%x", encryptedData)
+	return encryptText
 }
