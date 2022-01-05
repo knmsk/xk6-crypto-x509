@@ -9,13 +9,14 @@ This is a [k6](https://go.k6.io/k6) extension using the
 ## Hash Supported:
 * sha256
 * sha512
+* md5
 
 ## Usage
 
 Import an entire module's contents:
 
 ```js
-import * as cryptoX509 from "k6/x/crypto_x509";
+import * as cryptoX509 from "k6/x/crypto-x509";
 ```
 
 ## API
@@ -50,7 +51,6 @@ export default function () {
 
 ```
 
-
 ## Build
 
 To build a `k6` binary with this extension, first ensure you have the prerequisites:
@@ -67,4 +67,5 @@ Then:
 
 2. Build the binary:
   ```shell
-  $ xk6 build --with github.com/dgzlopes/xk6-exec@latest
+  $ xk6 build --with github.com/knmsk/xk6-crypto-x509@latest
+  ```
